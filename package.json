@@ -1,0 +1,20 @@
+{
+  "name": "group-4-second-project",
+  "version": "1.0.0",
+  "description": "For the Animals blog app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TacoSauce24/group-4-second-project.git"
+  },
+  "author": "Spikey1289, TacoSauce24, LA0615",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TacoSauce24/group-4-second-project/issues"
+  },
+  "homepage": "https://github.com/TacoSauce24/group-4-second-project#readme"
+}
