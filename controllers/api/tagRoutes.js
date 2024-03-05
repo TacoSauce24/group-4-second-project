@@ -1,6 +1,6 @@
 //Ian
 const router = require('express').Router();
-const { tag } = require('../../model');
+const { tag } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
 //test get

@@ -1,6 +1,6 @@
 //Ian
-const router = require("express").Router();
-const { user } = require("../../models");
+const router = require('express').Router();
+const { user } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
 // test get
@@ -37,7 +37,7 @@ router.put('/:id', /*withAuth,*/ async (req, res) => {
                 }
             );
             if (!updateUser) {
-                res.status(404).json({ message: 'no blog post found with this id' });
+                res.status(404).json({ message: 'no user found with this id' });
                 return;
             }
 
