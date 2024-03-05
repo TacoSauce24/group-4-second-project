@@ -1,12 +1,12 @@
 //Ian
 const router = require('express').Router();
-const { user } = require('../../models');
+const { users } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
 // test get
 router.get('/', async (req, res) => {
     try {
-        const allUsers = await user.findAll();
+        const allUsers = await users.findAll();
         res.status(200).json(allUsers);
     } catch(err) {
         res.status(400).json(err)
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const newUser = await user.create(req.body);
+        const newUser = await users.create(req.body);
 
         res.status(200).json(newUser);
     } catch (err) {
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', /*withAuth,*/ async (req, res) => {
     try {
         // if (req.session.user_id === parseInt(req.params.id)) {
-            const updateUser = await user.update(
+            const updateUser = await users.update(
                 {
                     ...req.body
                 },
@@ -54,7 +54,7 @@ router.put('/:id', /*withAuth,*/ async (req, res) => {
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         // if (req.session.user_id === parseInt(req.params.id)) {
-            const deleteUser = await user.destroy({
+            const deleteUser = await users.destroy({
                 where: {
                     id: req.params.id,
                 },
