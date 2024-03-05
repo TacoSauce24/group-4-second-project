@@ -52,7 +52,14 @@ comments.init(
                 model: 'tags',
                 key: 'id'
             }
-        }
+        },
+    },
+    {
+        sequelize,
+        timestamps: true,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'comments',
     }
 )
 
