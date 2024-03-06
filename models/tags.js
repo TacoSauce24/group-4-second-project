@@ -2,9 +2,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class animals extends Model {}
+class tags extends Model {}
 
-animals.init(
+tags.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,7 +12,7 @@ animals.init(
             primaryKey: true,
             autoIncremant: true,
         },
-        animal_name: {
+        tags_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -22,7 +22,7 @@ animals.init(
         timestamps: false,
         freezeTableName: true,
         underScored: true,
-        modelName: 'animals'
+        modelName: 'tags'
     },
 );
 
