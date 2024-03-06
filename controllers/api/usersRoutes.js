@@ -51,7 +51,7 @@ router.put('/:id', /*withAuth,*/ async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', /*withAuth,*/ async (req, res) => {
     try {
         // if (req.session.user_id === parseInt(req.params.id)) {
             const deleteUser = await User.destroy({
