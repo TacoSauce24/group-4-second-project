@@ -1,0 +1,38 @@
+[
+    {
+        "comment_title": "test 1",
+        "comment_body": "test 1",
+        "animal_id": 1,
+        "tag_id": 1
+    },
+    {
+        "comment_title": "test 2",
+        "comment_body": "test 2",
+        "animal_id": 2,
+        "tag_id": 2
+    },
+    {
+        "comment_title": "test 3",
+        "comment_body": "test 3",
+        "animal_id": 3,
+        "tag_id": 3
+    },
+    {
+        "comment_title": "test 4",
+        "comment_body": "test 4",
+        "animal_id": 4,
+        "tag_id": 4
+    },
+    {
+        "comment_title": "test 5",
+        "comment_body": "test 5",
+        "animal_id": 5,
+        "tag_id": 5
+    },
+    {
+        "comment_title": "test 6",
+        "comment_body": "test 6",
+        "animal_id": 6,
+        "tag_id": 6
+    }
+]
