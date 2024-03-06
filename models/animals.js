@@ -10,7 +10,7 @@ animals.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncremant: true,
+            autoIncrement: true,
         },
         animal_name: {
             type: DataTypes.STRING,

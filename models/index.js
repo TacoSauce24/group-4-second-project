@@ -24,22 +24,22 @@ comments.belongsTo(users, {
     foreignKey: 'users_id'
 })
 
-tags.belongsToMany(comments, {
+// tags.belongsToMany(comments, {
     // through: {
     //     model: animals,
     //     unique: false
     // },
     // as: 'comments_tags'
-});
+// });
 
 
-comments.belongsToMany(tags, {
+// comments.belongsToMany(tags, {
     // through: {
     //     model: animals,
     //     unique: false
     // },
     // as: 'tags_comments'
-});
+// });
 
 
 module.exports = { animals, comments, tags, users};
