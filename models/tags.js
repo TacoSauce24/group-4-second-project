@@ -10,7 +10,7 @@ tags.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncremant: true,
+            autoIncrement: true,
         },
         tags_name: {
             type: DataTypes.STRING,
@@ -26,4 +26,4 @@ tags.init(
     },
 );
 
-module.exports = animals;
+module.exports = tags;
