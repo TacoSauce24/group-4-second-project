@@ -1,5 +1,5 @@
 //Ian
-const sequelize = require('../config/connections');
+const sequelize = require('../config/connection');
 const { User, comments, animals, tags} = require('../models');
 
 const userData = require('./userData.json');
