@@ -1,7 +1,7 @@
 //Ian
 const router = require('express').Router();
 const { comments } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 //test get
 // router.get('/', withAuth, async (req, res) => {
@@ -9,7 +9,7 @@ const { comments } = require('../../models');
 //     res.status(200).json(allcomments);
 // });
 
-router.post('/', /*withAuth,*/ async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newComment = await comments.create(req.body);
 
@@ -19,7 +19,7 @@ router.post('/', /*withAuth,*/ async (req, res) => {
     }
 });
 
-router.put('/:id', /*withAuth,*/ async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const updateComment = await comments.update(
             {
@@ -28,7 +28,7 @@ router.put('/:id', /*withAuth,*/ async (req, res) => {
             {
                 where: {
                     id: req.params.id,
-                    // user_id: req.session.user_id,
+                    user_id: req.session.user_id,
                 },
             }
         );
@@ -43,12 +43,12 @@ router.put('/:id', /*withAuth,*/ async (req, res) => {
     }
 });
 
-router.delete('/:id', /*withAuth,*/ async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const deleteComment = await comments.destroy({
             where: {
                 id: req.params.id,
-                // user_id: req.session.user_id,
+                user_id: req.session.user_id,
             },
         });
 
