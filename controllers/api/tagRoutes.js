@@ -1,10 +1,10 @@
 //Ian
 const router = require('express').Router();
 const { tags } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 //test get
-router.get('/', /*withAuth,*/ async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const allTags = await tags.findAll();
         res.status(200).json(allTags);
@@ -13,7 +13,7 @@ router.get('/', /*withAuth,*/ async (req, res) => {
     }
 });
 
-router.post('/', /*withAuth,*/ async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newTag = await tags.create(req.body);
 
@@ -23,7 +23,7 @@ router.post('/', /*withAuth,*/ async (req, res) => {
     }
 });
 
-router.delete('/:id', /*withAuth,*/ async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const deleteTag = await tags.destroy({
             where: {
