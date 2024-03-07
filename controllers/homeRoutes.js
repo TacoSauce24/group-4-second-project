@@ -11,6 +11,7 @@ const withAuth = (req, res, next) => {
   } else {
     next();
   }
+<<<<<<< HEAD
 };
 
 // Handle GET request for the main page
@@ -48,3 +49,8 @@ router.get('/homepage', withAuth, async (req, res) => {
 });
 
 module.exports = router;
+=======
+});
+
+module.exports = router;
+>>>>>>> 2a7df3d2b5d9cc48e091dd3b0d4976a76c07bad3
