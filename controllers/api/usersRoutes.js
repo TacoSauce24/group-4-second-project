@@ -13,9 +13,15 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const newUser = await users.create(req.body);
+        const newUser = null;
+        try{
+            newUser = await users.create(req.body);
+        } catch (err) {
+            res.status(400).json({message: 'duplicate email, user not created'});
+            return;
+        }
 
         //creates session data for the created user
         req.session.save(() => {
