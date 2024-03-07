@@ -1,28 +1,50 @@
-const router = require('express').Router();
-const { Users, Comments } = require('../models');
-const withAuth = require('../utils/auth');
+// routes/homeRoutes.js
+const express = require('express');
+const router = express.Router();
+const { User } = require('../models');
 
+// Middleware to check if the user is authenticated
+const withAuth = (req, res, next) => {
+  if (!req.session.userId) {
+    // If the user is not authenticated, redirect them to the login page
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
+
+// Handle GET request for the main page
 router.get('/', async (req, res) => {
+  // Render the main.handlebars template with necessary data
+  res.render('main', {
+    pageTitle: 'Awesome Animals',
+    imageUrl: 'path/to/your/animals-image.jpg',
+  });
+});
+
+// Handle GET request for the user homepage
+router.get('/homepage', withAuth, async (req, res) => {
   try {
-    // Get all users and JOIN with user data
-    const usersData = await Users.findAll({
-      include: [
-        {
-          model: Users,
-          attributes: ['name'],
-        },
-      ],
-    });
+    // Fetch user-specific data to render on the homepage
+    const user = await User.findByPk(req.session.userId);
 
-    // Serialize data so the template can read it
-    const users = usersData.map((users) => users.get({ plain: true }));
+    if (user) {
+      // Render the homepage.handlebars template with personalized content
+      res.render('homepage', {
+        pageTitle: 'Awesome Animals I Have Seen',
+        animalImageUrl: 'path/to/animal/image.jpg',
+        animalGeneratedInfo: 'Generated information about the animal',
+        animalWikipediaLink: 'https://en.wikipedia.org/wiki/Animal',
+      });
+    } else {
+      // Handle case where the user data is not found
+      res.status(404).json({ error: 'User not found' });
+    }
 
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      users, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+module.exports = router;

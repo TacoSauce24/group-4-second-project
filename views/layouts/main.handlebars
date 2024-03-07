@@ -1,3 +1,4 @@
+<!-- views/main.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,34 +17,15 @@
       <div class="image-section">
         <img src="{{imageUrl}}" alt="Awesome Animals Image">
       </div>
-    
-       <div class="signup-section">
-        <div class="signup-box">
-          <h2>Sign Up</h2>
-          <form id="signup-form" action="/signup" method="post">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        </div>
-        
-        <div class="login-section">
-        <div class="login-box">
-          <h2>Login</h2>
-          <form id="login-form" action="/login" method="post">
-            <input type="text" name="username" placeholder="Username or Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-          </form>
-        </div>
-      </div>
+
+      {{! Include the signup  handlebars partial }}
+      {{> signup}}
+
+      {{! Include the login  handlebars partial }}
+      {{> login}}
+
     </div>
   </main>
 
-
 </body>
 </html>
-
-
