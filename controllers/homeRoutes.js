@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const { users } = require('../models');
-const withAuth = require('../../utils/auth');
+const withAuth = require('../utils/auth');
 
 // Middleware to check if the user is authenticated
 // const withAuth = (req, res, next) => {
