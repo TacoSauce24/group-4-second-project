@@ -1,3 +1,4 @@
+// lea
 // public/comment.js
 document.addEventListener('DOMContentLoaded', () => {
     const newCommentButton = document.getElementById('new-comment-btn');
@@ -9,4 +10,3 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Add new comment functionality will be implemented later.');
     });
   });
-  

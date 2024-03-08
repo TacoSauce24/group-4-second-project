@@ -1,3 +1,4 @@
+// lea
 // public/signup.js
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signup-form');
@@ -34,4 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  
+
+  const signupFormHandler = async (event) => {
+    event
+  }
