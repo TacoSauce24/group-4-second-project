@@ -4,7 +4,8 @@ const router = express.Router();
 const { users } = require('../models');
 const withAuth = require('../utils/auth');
 
-// Middleware to check if the user is authenticated
+
+// // Middleware to check if the user is authenticated
 // const withAuth = (req, res, next) => {
 //   if (!req.session.userId) {
 //     // If the user is not authenticated, redirect them to the login page
@@ -52,6 +53,15 @@ router.get('/homepage', withAuth, async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+
+router.get('/login', (req, res)=> {
+  if (req.session.logged_in) {
+    res.redirect('/homepage');
+    return;
+  }
+
+  res.render('login-signup');
 });
 
 module.exports = router;
