@@ -2,16 +2,17 @@
 const express = require('express');
 const router = express.Router();
 const { users } = require('../models');
+const withAuth = require('../../utils/auth');
 
 // Middleware to check if the user is authenticated
-const withAuth = (req, res, next) => {
-  if (!req.session.userId) {
-    // If the user is not authenticated, redirect them to the login page
-    res.redirect('/login');
-  } else {
-    next();
-  }
-};
+// const withAuth = (req, res, next) => {
+//   if (!req.session.userId) {
+//     // If the user is not authenticated, redirect them to the login page
+//     res.redirect('/login');
+//   } else {
+//     next();
+//   }
+// };
 
 // Handle GET request for the main page
 router.get('/', async (req, res) => {
