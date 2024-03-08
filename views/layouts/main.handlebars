@@ -1,4 +1,4 @@
-<!--Lea-->
+{{!-- <!--Lea-->
 <!-- views/layouts/main.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
@@ -41,5 +41,60 @@
 
     <script src="script.js"></script>
 </body>
+
+</html> --}}
+
+<!--Lea-->
+<!-- views/layouts/main.handlebars -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Animals Seen Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+  </head>
+
+  <body>
+
+    <section class="hero is-primary">
+      <div class="hero-body">
+      <h1 class="title has-text-centered has-text-white">
+          Animals Seen Blog
+        </h1>
+      </div>
+    </section>
+
+    <aside class="login-nav">
+      <nav>
+        <a href="/">Homepage</a>
+        |
+        <a href="/dashboard">Dashboard</a>
+        |
+        {{#if logged_in}}
+          <a id="logout">Logout</a>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+
+      {{#if logged_in}}
+        <div class="login-info">
+          <p>Welcome, {{username}}!</p>
+        </div>
+      {{/if}}
+    </aside>
+
+    <!-- Your main content goes here -->
+    {{{body}}}
+
+    <script src="script.js"></script>
+  </body>
 
 </html>
