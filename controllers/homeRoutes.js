@@ -1,7 +1,7 @@
 // routes/homeRoutes.js
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models');
+const { users } = require('../models');
 
 // Middleware to check if the user is authenticated
 const withAuth = (req, res, next) => {
@@ -15,18 +15,25 @@ const withAuth = (req, res, next) => {
 
 // Handle GET request for the main page
 router.get('/', async (req, res) => {
-  // Render the main.handlebars template with necessary data
-  res.render('main', {
-    pageTitle: 'Awesome Animals',
-    imageUrl: 'path/to/your/animals-image.jpg',
-  });
+  try {
+    // Fetch user-specific data if needed
+    const user = await users.findByPk(req.session.userId);
+
+    // Render the main.handlebars template with the specified layout
+    res.render('homepage', {
+      pageTitle: 'Animals Seen Blog',
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // Handle GET request for the user homepage
 router.get('/homepage', withAuth, async (req, res) => {
   try {
     // Fetch user-specific data to render on the homepage
-    const user = await User.findByPk(req.session.userId);
+    const user = await users.findByPk(req.session.userId);
 
     if (user) {
       // Render the homepage.handlebars template with personalized content
@@ -40,7 +47,6 @@ router.get('/homepage', withAuth, async (req, res) => {
       // Handle case where the user data is not found
       res.status(404).json({ error: 'User not found' });
     }
-
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -48,3 +54,4 @@ router.get('/homepage', withAuth, async (req, res) => {
 });
 
 module.exports = router;
+

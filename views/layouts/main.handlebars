@@ -1,31 +1,37 @@
-<!-- views/main.handlebars -->
+<!-- views/layouts/main.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awesome Animals</title>
   <link rel="stylesheet" href="styles.css">
+  <title>Animals Seen Blog</title>
 </head>
+
 <body>
+
   <header>
-    <h1>{{pageTitle}}</h1>
+    <h1>Animals Seen Blog</h1>
   </header>
 
-  <main>
-    <div class="content">
-      <div class="image-section">
-        <img src="{{imageUrl}}" alt="Awesome Animals Image">
-      </div>
+  <nav>
+    <a href="/">Homepage</a>
+    |
+    <a href="/dashboard">Dashboard</a>
+    |
+    {{#if logged_in}}
+    <a id="logout">Logout</a>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+  </nav>
 
-      {{! Include the signup  handlebars partial }}
-      {{> signup}}
+  <!-- Your main content goes here -->
+  {{{body}}}
 
-      {{! Include the login  handlebars partial }}
-      {{> login}}
-
-    </div>
-  </main>
-
+  <script src="script.js"></script>
 </body>
+
 </html>
+
