@@ -1,6 +1,6 @@
 // public/login.js
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login2');
+    const loginForm = document.getElementsByClassName('form login-form');
   
     loginForm.addEventListener('submit', async (event) => {
       event.preventDefault();
