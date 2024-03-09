@@ -1,48 +1,4 @@
-{{!-- <!--Lea-->
-<!-- views/layouts/main.handlebars -->
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='/css/style.css' />
-    <title>Animals Seen Blog</title>
-</head>
-
-<body>
-
-    <header>
-        <h1>Animals Seen Blog</h1>
-    </header>
-
-    <aside class="login-nav">
-        <nav>
-            <a href="/">Homepage</a>
-            |
-            <a href="/dashboard">Dashboard</a>
-            |
-            {{#if logged_in}}
-            <a id="logout">Logout</a>
-            {{else}}
-            <a href="/login">Login</a>
-            {{/if}}
-        </nav>
-
-        {{#if logged_in}}
-        <div class="login-info">
-            <p>Welcome, {{username}}!</p>
-        </div>
-        {{/if}}
-    </aside>
-
-    <!-- Your main content goes here -->
-    {{{body}}}
-
-    <script src="script.js"></script>
-</body>
-
-</html> --}}
 
 <!--Lea-->
 <!-- views/layouts/main.handlebars -->
@@ -58,6 +14,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+  <link rel="stylesheet" href="/css/style.css">
+
 
   </head>
 
@@ -65,36 +23,43 @@
 
     <section class="hero is-primary">
       <div class="hero-body">
-      <h1 class="title has-text-centered has-text-white">
+      <h1 class="title has-text-centered has-text-white is-size-1	has-text-weight-bold	">
           Animals Seen Blog
         </h1>
       </div>
     </section>
 
-    <aside class="login-nav">
-      <nav>
-        <a href="/">Homepage</a>
-        |
-        <a href="/dashboard">Dashboard</a>
-        |
-        {{#if logged_in}}
-          <a id="logout">Logout</a>
-        {{else}}
-          <a href="/login">Login</a>
-        {{/if}}
-      </nav>
+<!-- navigation bar with homepage, dashboard, and login links -->
+<nav class="navbar has-background-lightyellow" role="navigation" aria-label="main navigation">
+  <div class="navbar-end">
+     <a class="navbar-item has-text-link-dark" href="/">Homepage</a>
+    <a class="navbar-item has-text-link-dark" href="/dashboard">Dashboard</a>
 
-      {{#if logged_in}}
-        <div class="login-info">
-          <p>Welcome, {{username}}!</p>
-        </div>
-      {{/if}}
-    </aside>
+   <!-- Login button -->
+    {{#if logged_in}}
+      <a id="logout" class="navbar-item has-text-link-dark  button is-danger">Logout</a>
+    {{else}}
+      <a href="/login" class="navbar-item has-text-link-dark">Login</a>
+    {{/if}}
+  </div>
+</nav>
 
-    <!-- Your main content goes here -->
+<!-- Additional login info if logged in -->
+{{#if logged_in}}
+  <div class="login-info">
+    <p>Welcome, {{username}}!</p>
+  </div>
+{{/if}}
+
+    <!-- Main Content -->
     {{{body}}}
 
-    {{!-- <script src="script.js"></script> --}}
-  </body>
+<!-- Centered image -->
+<div class="image-container has-background-lightyellow has-text-centered">
+  <img src="{{animalImageUrl}}" alt="Animals Image" class="is-half">
+</div>
 
-</html>
+    {{#if logged_in}}
+  <script src="script.js"></script>
+    {{/if}}
+  </body>
