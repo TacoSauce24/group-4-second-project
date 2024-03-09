@@ -15,11 +15,9 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const newUser = null;
-        try{
-            newUser = await users.create(req.body);
-        } catch (err) {
-            res.status(400).json({message: 'duplicate email, user not created'});
+        newUser = await users.create(req.body);
+        if(!newUser) {
+            res.status(500).json({ message: 'duplicate email, user not created' });
             return;
         }
 
@@ -31,7 +29,7 @@ router.post('/', async (req, res) => {
             res.json({ user: newUser, message: 'You are now logged in!' });
         });
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
     }
 });
 
