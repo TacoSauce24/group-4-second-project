@@ -1,20 +1,152 @@
 [
-    {
-        "animal_name": "otter"
-    },
-    {
-        "animal_name": "kangaroo"
-    },
-    {
-        "animal_name": "monkey"
-    },
-    {
-        "animal_name": "squirrel"
-    },
-    {
-        "animal_name": "penguin"
-    },
-    {
-        "animal_name": "whale"
-    }
+        {
+            "animal_name": "Aardvark"
+        },
+        {
+            "animal_name": "Antelope"
+        },
+        {
+            "animal_name": "Armadillo"
+        },
+        {
+            "animal_name": "Baboon"
+        },
+        {
+            "animal_name": "Badger"
+        },
+        {
+            "animal_name": "Bison"
+        },
+        {
+            "animal_name": "Caracal"
+        },
+        {
+            "animal_name": "Cheetah"
+        },
+        {
+            "animal_name": "Chimpanzee"
+        },
+        {
+            "animal_name": "Crocodile"
+        },
+        {
+            "animal_name": "Dingo"
+        },
+        {
+            "animal_name": "Dolphin"
+        },
+        {
+            "animal_name": "Elephant"
+        },
+        {
+            "animal_name": "Ferret"
+        },
+        {
+            "animal_name": "Giraffe"
+        },
+        {
+            "animal_name": "Gorilla"
+        },
+        {
+            "animal_name": "Hedgehog"
+        },
+        {
+            "animal_name": "Hippopotamus"
+        },
+        {
+            "animal_name": "Hyena"
+        },
+        {
+            "animal_name": "Kangaroo"
+        },
+        {
+            "animal_name": "Koala"
+        },
+        {
+            "animal_name": "Leopard"
+        },
+        {
+            "animal_name": "Lion"
+        },
+        {
+            "animal_name": "Lynx"
+        },
+        {
+            "animal_name": "Mongoose"
+        },
+        {
+            "animal_name": "Ocelot"
+        },
+        {
+            "animal_name": "Ostrich"
+        },
+        {
+            "animal_name": "Panda"
+        },
+        {
+            "animal_name": "Penguin"
+        },
+        {
+            "animal_name": "Porcupine"
+        },
+        {
+            "animal_name": "Quokka"
+        },
+        {
+            "animal_name": "Raccoon"
+        },
+        {
+            "animal_name": "Rhinoceros"
+        },
+        {
+            "animal_name": "Sloth"
+        },
+        {
+            "animal_name": "Tapir"
+        },
+        {
+            "animal_name": "Tiger"
+        },
+        {
+            "animal_name": "Walrus"
+        },
+        {
+            "animal_name": "Warthog"
+        },
+        {
+            "animal_name": "Wolverine"
+        },
+        {
+            "animal_name": "Wombat"
+        },
+        {
+            "animal_name": "Yak"
+        },
+        {
+            "animal_name": "Zebra"
+        },
+        {
+            "animal_name": "Albatross"
+        },
+        {
+            "animal_name": "Bald Eagle"
+        },
+        {
+            "animal_name": "Black Swan"
+        },
+        {
+            "animal_name": "Blue Jay"
+        },
+        {
+            "animal_name": "Condor"
+        },
+        {
+            "animal_name": "Crow"
+        },
+        {
+            "animal_name": "Duck"
+        },
+        {
+            "animal_name": "Flamingo"
+        }
 ]
