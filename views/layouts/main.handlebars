@@ -49,12 +49,15 @@
   </div>
 {{/if}}
 
-
-
-<!-- Your main content goes here -->
+    <!-- Main Content -->
     {{{body}}}
 
-    <script src="script.js"></script>
-  </body>
+<!-- Centered image -->
+<div class="image-container has-background-lightyellow has-text-centered">
+  <img src="{{animalImageUrl}}" alt="Animals Image" class="is-half">
+</div>
 
-</html>
+    {{#if logged_in}}
+      <script src='/js/logout.js' defer></script>
+    {{/if}}
+  </body>
