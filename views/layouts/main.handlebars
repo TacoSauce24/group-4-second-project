@@ -14,6 +14,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+  <link rel="stylesheet" href="/css/style.css">
+
 
   </head>
 
@@ -28,14 +30,14 @@
     </section>
 
 <!-- navigation bar with homepage, dashboard, and login links -->
-<nav class="navbar has-background-warning-light" role="navigation" aria-label="main navigation">
+<nav class="navbar has-background-lightyellow" role="navigation" aria-label="main navigation">
   <div class="navbar-end">
      <a class="navbar-item has-text-link-dark" href="/">Homepage</a>
     <a class="navbar-item has-text-link-dark" href="/dashboard">Dashboard</a>
 
    <!-- Login button -->
     {{#if logged_in}}
-      <a id="logout" class="navbar-item has-text-link-dark button is-danger">Logout</a>
+      <a id="logout" class="navbar-item has-text-link-dark  button is-danger">Logout</a>
     {{else}}
       <a href="/login" class="navbar-item has-text-link-dark">Login</a>
     {{/if}}
@@ -58,6 +60,6 @@
 </div>
 
     {{#if logged_in}}
-      <script src='/js/logout.js' defer></script>
+  <script src="script.js"></script>
     {{/if}}
   </body>

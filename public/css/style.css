@@ -1,8 +1,5 @@
-.hero{
-text-align: center;
+.has-background-lightyellow{
+    background-color: lightgoldenrodyellow;
 }
 
-
-.hero.title{
-text-align: center;
-}
+  
