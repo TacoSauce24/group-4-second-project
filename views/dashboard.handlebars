@@ -1,121 +1,16 @@
-{{!-- 
+<!-- views/dashboard.handlebars -->
+{{> layouts/shared
+  pageTitle="Dashboard"
+  logged_in=logged_in
+  username=username
+}}
 
-<!-- dashboard.handlebars -->
-
+<!--  dashboard-specific content goes here -->
 <section class="section">
   <div class="container">
     <h2 class="title has-text-centered">
-      Welcome, {{user.name}}!
+      Welcome, {{username}}!
     </h2>
-
-     <!-- Box with designated spot for the image and search form -->
-<div class="box">
-  <div class="columns">
-   <!-- Larger column on top -->
-<div class="column is-full">
-  <!-- Form to search for an animal on Wikipedia -->
-  <form id="animalSearchForm">
-    <div class="field">
-      <label class="label" for="animalName">Search for an animal :</label>
-      <div class="control">
-        <input class="input" type="text" id="animalName" placeholder="Enter the name of the animal">
-      </div>
-    </div>
-
-        <div class="field">
-          <div class="control">
-            <button class="button is-primary" type="submit">Search</button>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <!-- Three smaller columns side by side -->
-    <div class="column is-one-third">
-      <!-- Content for the first smaller column -->
-    </div>
-
-    <div class="column is-one-third">
-      <!-- Content for the second smaller column -->
-    </div>
-
-    <div class="column is-one-third">
-      <!-- Content for the third smaller column -->
-    </div>
+    <!-- Other dashboard content goes here -->
   </div>
-</div>
-
-
-        <div class="column is-one-third">
-          <!-- Content for the second smaller column -->
-        </div>
-
-        <div class="column is-one-third">
-          <!-- Content for the third smaller column -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Comments Box -->
-    <div class="box">
-      <h2 class="title has-text-centered">Comments</h2>
-      <!-- Add your comment form or display logic here -->
-    </div>
-
-    <!-- Additional content goes here -->
-
-    <!-- Include your JavaScript file -->
-    <script src="/js/dashboard.js"></script>
-  </div>
-</section> --}}
-
-<section class="section">
-    <div class="container">
-        <h2 class="title has-text-centered">
-            Welcome, {{user.name}}!
-        </h2>
-
-        <div class="box">
-            <div class="columns">
-                <div class="column is-full">
-                    <form id="animalSearchForm">
-                        <div class="field">
-                            <label class="label" for="animalName">Search for an animal:</label>
-                            <div class="control">
-                                <input class="input" type="text" id="animalName" placeholder="Enter the name of the animal">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="control">
-                                <button class="button is-primary" type="submit">Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Display area for Wikipedia information -->
-            <div id="wikipediaInfo" class="content"></div>
-
-            <div class="columns">
-                <div class="column is-one-third">
-                    <!-- Content for the first smaller column -->
-                </div>
-                <div class="column is-one-third">
-                    <!-- Content for the second smaller column -->
-                </div>
-                <div class="column is-one-third">
-                    <!-- Content for the third smaller column -->
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <h2 class="title has-text-centered">Comments</h2>
-            <!-- Add your comment form or display logic here -->
-        </div>
-
-        <!-- Include your JavaScript file -->
-        <script src="/js/dashboard.js"></script>
-    </div>
 </section>
