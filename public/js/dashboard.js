@@ -1,28 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//     //console.log('DOM Loaded');
-
-//     const animalSearchForm = document.getElementById('animalSearchForm');
-
-//     if (animalSearchForm) {
-//       //console.log('Form found:', animalSearchForm);
-
-//       animalSearchForm.addEventListener('submit', async (event) => {
-//         event.preventDefault();
-
-//         const animalNameInput = document.getElementById('animalName');
-//         const animalName = animalNameInput.value.trim();
-
-//         // fetch data from Wikipedia
-//         console.log('Animal Name:', animalName);
-
-//         // Reset the form after processing
-//         animalSearchForm.reset();
-//       });
-//     } else {
-//       console.error('Form not found');
-//     }
-//   });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const animalSearchForm = document.getElementById('animalSearchForm');
@@ -57,3 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Form or Wikipedia info area not found');
     }
 });
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      // Fetch existing comments from the server
+      const response = await fetch('/comments'); 
+      const existingComments = await response.json();
+  
+      // Display existing comments in the comment boxes
+      const commentBoxes = document.querySelectorAll('.column.is-one-third .box');
+  
+      existingComments.slice(0, 2).forEach((comment, index) => {
+        const box = commentBoxes[index];
+        box.querySelector('h2').textContent = comment.comment_title; 
+      box.querySelector('p').textContent = comment.comment_body;
+      });
+    } catch (error) {
+      console.error('Error fetching or displaying comments:', error);
+    }
+  });
+  
