@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const errorData = await response.json();
         console.error(errorData.error);
         // Display an error message to the user
+        alert('Email or password is incorrect.')
       }
     } catch (error) {
       console.error('An error occurred during login:', error);
@@ -39,6 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = document.querySelector('#name-signup').value;
     const email = document.querySelector('#email-signup').value;
     const password = document.querySelector('#password-signup').value;
+
+ if (name.length < 3) {
+      alert('username must be at least 3 characters long.');
+      return; // Prevent the form submission if the username is too short
+  }
+
+    // Check if the password meets the minimum length requirement
+    if (password.length < 8) {
+        alert('Password must be at least 8 characters long.');
+        return; // Prevent the form submission if the password is too short
+    }
 
     // Send a signup request to the server
     try {
