@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     // Fetch user-specific data if needed
-    const user = await users.findByPk(req.session.userId);
+    const user = await users.findByPk(req.session.user_id);
 
     // Render the login-signup.handlebars template with necessary data
     res.render("login-signup", {
@@ -38,31 +38,30 @@ router.get("/login", async (req, res) => {
 router.get("/signup", async (req, res) => {
   try {
     // Fetch user-specific data if needed
-    const user = await users.findByPk(req.session.userId);
+    const user = await users.findByPk(req.session.user_id);
 
     // Render the login-signup.handlebars template with necessary data
     res.render("login-signup", {
       pageTitle: "Log In or Sign Up",
-      animalImageUrl: "images/animals.jpg",
+      // animalImageUrl: "images/animals.jpg",
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-
-  res.render("login-signup");
 });
 
 // Handle GET request for the dashboard page
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Fetch user-specific data to render on the dashboard
-    const user = await users.findByPk(req.session.userId);
+    const user = await users.findByPk(req.session.user_id);
 
     if (user) {
       // Render the dashboard.handlebars template with personalized content
+      console.log(user);
       res.render("dashboard", {
-        pageTitle: `Welcome, ${user.username}!`,
+        pageTitle: `Welcome, ${user.name}!`,
       });
     } else {
       // Handle case where the user data is not found

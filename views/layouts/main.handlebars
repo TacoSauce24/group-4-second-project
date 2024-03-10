@@ -47,7 +47,7 @@
 <!-- Additional login info if logged in -->
 {{#if logged_in}}
   <div class="login-info">
-    <p>Welcome, {{username}}!</p>
+    <p>Welcome, {{user.name}}!</p>
   </div>
 {{/if}}
 
@@ -59,7 +59,7 @@
   <img src="{{animalImageUrl}}" alt="Animals Image" class="is-half">
 </div>
 
-    {{#if logged_in}}
+    {{!-- {{#if logged_in}}
   <script src="script.js"></script>
-    {{/if}}
+    {{/if}} --}}
   </body>
