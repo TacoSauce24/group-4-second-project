@@ -1,8 +1,9 @@
-<div class="row has-background-lightyellow">
+<div class="row has-background-lightyellow " >
   <div class="col-md-6">
-    <h2>Login</h2>
+    
 
-    <form class="form login-form">
+    <form class=" form login-form box " style="width:300px; font-size: 20px;  margin: 6px;  border: 1px solid black;">
+      <h2 style="border-bottom:1px solid black ;">Login</h2>
       <div class="form-group">
         <label for="email-login">email:</label>
         <input class="form-input" type="text" id="email-login" />
@@ -12,14 +13,15 @@
         <input class="form-input" type="password" id="password-login" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" id="login2" type="submit">login</button>
+        <button class="btn btn-primary button is-normal" id="login2" type="submit" style="border: 1px solid black;">login</button>
       </div>
     </form>
   </div>
   <div class="col-md-6">
-    <h2>Signup</h2>
+    
 
-    <form class="form signup-form">
+    <form class="form signup-form box" style="width:300px; font-size: 20px; margin: 6px; border: 1px solid black; padding: left 5px; ">
+      <h2 style="border-bottom:1px solid black ;">Signup</h2>
       <div class="form-group">
         <label for="name-signup">username:</label>
         <input type="text" id="name-signup" name="name-signup" />
@@ -34,10 +36,15 @@
         <input class="form-input" type="password" id="password-signup" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
+        <button class="btn btn-primary button is-normal" type="submit" style="border: 1px solid black;">signup</button>
       </div>
     </form>
   </div>
 </div>
+
+  <!-- Centered image -->
+  <div class="image-container has-background-lightyellow has-text-centered">
+    <img src="{{animalImageUrl}}" alt="Animals Image" class="is-half">
+  </div>
 
 <script src="./js/login.js"></script>

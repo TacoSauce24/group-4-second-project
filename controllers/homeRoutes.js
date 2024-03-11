@@ -77,7 +77,7 @@
 
 const express = require("express");
 const router = express.Router();
-const { users } = require("../models");
+const { users, animals, comments } = require("../models");
 const withAuth = require("../utils/auth");
 
 // Dynamic import for node-fetch
@@ -157,6 +157,27 @@ import("node-fetch")
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
       }
+    });
+
+    // Handle GET request
+    router.get("/animalcomments", /*withAuth,*/ async (req, res) => {
+
+      const searchTerm = req.query.searchTerm; // Get the search term from the query parameters
+
+      const animalComments = await animals.findAll({
+        where: {
+          animal_name: "Aardvark"
+        },
+        include: {
+          model: comments, 
+          attributes: ["id", "comment_title", "comment_body"],
+          include: {
+            model: users,
+            attributes: ["name"]
+          }
+        }
+      })
+      res.json({animalComments})
     });
 
     // Add the route handler for fetching data from the Wikipedia API here

@@ -17,7 +17,7 @@
 
   </head>
 
-  <body>
+  <body style="background-color: lightgoldenrodyellow; height: 100%; ">
 
     <section class="hero is-primary">
       <div class="hero-body">
@@ -28,7 +28,7 @@
     </section>
 
   <!-- navigation bar with homepage, dashboard, and login links -->
-  <nav class="navbar has-background-lightyellow" role="navigation" aria-label="main navigation">
+  <nav class="navbar has-background-lightyellow" role="navigation" aria-label="main navigation" style="margin-right: 12px; font-size: 17px">
     <div class="navbar-end">
       <a class="navbar-item has-text-link-dark" href="/">Homepage</a>
       <a class="navbar-item has-text-link-dark" href="/dashboard">Dashboard</a>
@@ -45,25 +45,7 @@
 
   <!-- Main Content -->
   {{{body}}}
-
-   <!-- Centered image -->
-  <div class="image-container has-background-lightyellow has-text-centered">
-    <img src="{{animalImageUrl}}" alt="Animals Image" class="is-half">
-  </div> 
-
 </nav>
-
-<!-- Additional login info if logged in -->
-{{#if logged_in}}
-  <div class="login-info">
-    <p>Welcome, {{user.name}}!</p>
-  </div>
-{{/if}} 
-
-     {{!-- {{#if logged_in}}
-  <script src="script.js"></script>
-    {{/if}}  --}}
-
   
 </body>
 </html>
