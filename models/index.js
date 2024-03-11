@@ -6,7 +6,7 @@ const users = require('./users');
 
 
 animals.hasMany(comments, {
-    foreignKey: 'animals_id',
+    foreignKey: 'animal_id',
     onDelete: 'CASCADE'
 });
 
@@ -15,13 +15,13 @@ comments.belongsTo(animals, {
 })
 
 users.hasMany(comments, {
-    foreignKey: 'users_id',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE',
     
 });
 
 comments.belongsTo(users, {
-    foreignKey: 'users_id'
+    foreignKey: 'user_id'
 })
 
 // tags.belongsToMany(comments, {
