@@ -60,20 +60,32 @@
   </div>
 </div>
 
+  <!-- New Comment Box -->
+<div class="column is-one-third">
+  <div class="box" id="newCommentBox">
+    <h2 class="title has-text-centered">New Comment</h2>
+    <p>This is where the new comment will appear.</p>
+  </div>
+</div>
+
 <!-- Comment Form Column -->
 <div class="column is-one-third">
   <div class="box">
     <h2 class="title has-text-centered">Add a Comment</h2>
-
     <!-- Form to add a new comment -->
-<form id="addCommentForm">
+    <form id="addCommentForm">
       <div class="field">
-        <label class="label" for="newComment">New Comment:</label>
+        <label class="label" for="commentTitle">Title:</label>
         <div class="control">
-          <textarea class="textarea is small" id="newComment" placeholder="Type your comment here"></textarea>
+          <input class="input" type="text" id="commentTitle" placeholder="Enter comment title">
         </div>
       </div>
-
+      <div class="field">
+        <label class="label" for="newComment">Comment:</label>
+        <div class="control">
+          <textarea class="textarea is-small" id="newComment" placeholder="Type your comment here"></textarea>
+        </div>
+      </div>
       <div class="field">
         <div class="control">
           <button class="button is-primary" type="submit">Submit Comment</button>
@@ -82,8 +94,6 @@
     </form>
   </div>
 </div>
-  
-
     <!-- Include your JavaScript file -->
     <script src="/js/dashboard.js"></script>
   </div>
