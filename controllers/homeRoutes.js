@@ -148,7 +148,8 @@ import("node-fetch")
           res.render("dashboard", {
             pageTitle: `Welcome, ${user.name}!`,
             logged_in: req.session.logged_in,
-            username: user.name
+            username: user.name,
+            user_id: req.session.user_id
           });
         } else {
           // Handle case where the user data is not found
@@ -164,8 +165,6 @@ import("node-fetch")
     router.get("/allanimalcomments", /*withAuth,*/ async (req, res) => {
 
       // const searchTerm = req.query.searchTerm; // Get the search term from the query parameters
-      
-
       const allAnimalCommentsData = await comments.findAll({
         attributes: ["comment_title", "comment_body"],
         include: [{
@@ -192,7 +191,6 @@ import("node-fetch")
     router.get("/animalcomments", /*withAuth,*/ async (req, res) => {
 
       const searchTerm = req.query.searchTerm; // Get the search term from the query parameters
-
 
       const animalComments = await animals.findAll({
         where: {

@@ -6,8 +6,8 @@ const tagRoutes = require('./tagRoutes');
 const animalRoutes = require('./animalRoutes');
 
 router.use('/users', userRoutes);
-router.use('/commentRoutes', commentRoutes);
-router.use('/tagRoutes', tagRoutes);
-router.use('/animalRoutes', animalRoutes);
+router.use('/comments', commentRoutes);
+router.use('/tags', tagRoutes);
+router.use('/animals', animalRoutes);
 
 module.exports = router;

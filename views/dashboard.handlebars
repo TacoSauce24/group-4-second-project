@@ -39,11 +39,10 @@
           {{!-- existing comments --}}
           <div class="database-comments column is-one-third">
           </div>
-        </div>
-      
-
-        <!-- New Comment Box -->
-        <div class="new-comment column is-one-third">
+        
+          <!-- New Comment Box -->
+          <div class="new-comment-container column is-one-third">
+          </div>
         </div>
       </section>
 
@@ -56,13 +55,13 @@
             <div class="field">
               <label class="label" for="commentTitle">Title:</label>
               <div class="control">
-                <input class="input" type="text" id="commentTitle" placeholder="Enter comment title">
+                <input class="input" type="text" id="new-comment-title" placeholder="Enter comment title">
               </div>
             </div>
             <div class="field">
               <label class="label" for="newComment">Comment:</label>
               <div class="control">
-                <textarea class="textarea is-small" id="newComment" placeholder="Type your comment here"></textarea>
+                <textarea class="textarea is-small" id="new-comment-body" placeholder="Type your comment here"></textarea>
               </div>
             </div>
             <div class="field">

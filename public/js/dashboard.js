@@ -1,3 +1,7 @@
+
+let search = false;
+let commentIndex = 0;
+let animalName;
 document.addEventListener("DOMContentLoaded", () => {
   const animalSearchForm = document.getElementById("animalSearchForm");
   const wikipediaInfo = document.getElementById("wikipediaInfo");
@@ -7,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       const animalNameInput = document.getElementById("animalName");
-      const animalName = animalNameInput.value.trim();
+      animalName = animalNameInput.value.trim();
+
 
       // Fetch data from Wikipedia API
       try {
@@ -26,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Reset the form after processing
+      search = true;
       animalSearchForm.reset();
     });
   } else {
@@ -43,7 +49,6 @@ const fetchAndDisplayAnimalComments = async () => {
     // Check the type of existingComments
     if (typeof existingComments === "object" && existingComments !== null) {
       // Display comments if existingComments is an object
-      let commentIndex = 0;
 
       existingComments.forEach((comment) => {
         const container = document.querySelector('.database-comments');
@@ -56,8 +61,8 @@ const fetchAndDisplayAnimalComments = async () => {
         }
         loadComment.innerHTML = 
         `
-          <h3 class="comment-title${commentIndex} has-text-centered">${comment.comment_title}</h3>
-          <p class="comment-body${commentIndex}">${comment.comment_body}</p>
+          <h3 class="comment-title${commentIndex} has-text-centered">${comment.comment_title} - ${comment.animal}</h3>
+          <p class="comment-body${commentIndex}">${comment.comment_body} - ${comment.username}</p>
         `
         container.appendChild(loadComment);
         commentIndex++;
@@ -75,33 +80,66 @@ const fetchAndDisplayAnimalComments = async () => {
 // Call the function to fetch and display comments when the page loads
 document.addEventListener("DOMContentLoaded", fetchAndDisplayAnimalComments);
 
-// Function to display a comment in the "New Comment Box"
-const displayComment = (comment) => {
-  const newCommentBox = document.getElementById("newCommentBox");
-  newCommentBox.querySelector("h2").textContent =
-    comment.title || "New Comment";
-  newCommentBox.querySelector("p").textContent = comment.text || "No content";
-  console.log("Comment displayed:", comment);
-};
-
 // Function to handle form submission and add a new comment
 const handleCommentFormSubmit = async (event) => {
   event.preventDefault()
 
-  // Get the new comment details from the form
-  const commentTitle = document.getElementById("commentTitle").value;
-  const newCommentText = document.getElementById("newComment").value;
+  //checks if the user has searched with a simple variable
+  if(search){
+    try{
 
-  console.log("New comment submitted:", {
-    title: commentTitle,
-    text: newCommentText,
-  });
+    //new-comment-container
 
-  // Display the new comment in the "New Comment Box"
-  displayComment({ title: commentTitle, text: newCommentText });
+    // Get the new comment details from the form
+    const comment_title = await document.getElementById(`new-comment-title`).value;
+    const comment_body = await document.getElementById(`new-comment-body`).value;
+    const user_id = await sessionStorage.getItem('user_id');
+    const animal_id = await fetch(`/api/animals/:${animalName}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  // Reset the form after successful submission
-  document.getElementById("addCommentForm").reset();
+    console.log(comment_title, comment_body, user_id, animal_id);
+
+    const newCommentResponse = await fetch('/api/comments', {
+      method: 'POST',
+      body: JSON.stringify({
+        comment_title,
+        comment_body,
+        user_id,
+        animal_id
+      })
+    });
+
+    comment = newCommentResponse;
+
+    const newContainer = document.querySelector('.new-comment-container');
+
+    const loadNewComment = document.createElement('div');
+    loadNewComment.classList.add(`existing-comment${commentIndex}`, "box");
+    const errorComment = document.querySelector('.existing-comment');
+    if (errorComment !== null) {
+      errorComment.remove();
+    }
+    loadNewComment.innerHTML =
+      `
+        <h3 class="comment-title${commentIndex} has-text-centered">${comment.comment_title} - ${comment.animal}</h3>
+        <p class="comment-body${commentIndex}">${comment.comment_body}</p>
+      `
+    newContainer.appendChild(loadNewComment);
+    commentIndex++;
+
+    // Reset the form after successful submission
+    document.getElementById("addCommentForm").reset();
+    } catch(err) {
+      alert(err);
+      console.error(err);
+    }
+  } else {
+    alert("you've not searched an animal, so you can't add a comment");
+  }
 };
 
 // Add event listeners after DOM content is loaded
