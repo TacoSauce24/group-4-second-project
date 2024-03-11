@@ -92,6 +92,7 @@ import("node-fetch")
         res.render("homepage", {
           pageTitle: "Animals Seen Blog",
           animalImageUrl: "images/animals.jpg",
+          logged_in: req.session.logged_in,
         });
       } catch (error) {
         console.error(error);
@@ -109,6 +110,7 @@ import("node-fetch")
         res.render("login-signup", {
           pageTitle: "Log In or Sign Up",
           animalImageUrl: "images/animals.jpg",
+          logged_in: req.session.logged_in,
         });
       } catch (error) {
         console.error(error);
@@ -125,7 +127,8 @@ import("node-fetch")
         // Render the login-signup.handlebars template with necessary data
         res.render("login-signup", {
           pageTitle: "Log In or Sign Up",
-          // animalImageUrl: "images/animals.jpg",
+          logged_in: req.session.logged_in,
+          animalImageUrl: "images/animals.jpg",
         });
       } catch (error) {
         console.error(error);
@@ -144,6 +147,7 @@ import("node-fetch")
           console.log(user);
           res.render("dashboard", {
             pageTitle: `Welcome, ${user.name}!`,
+            logged_in: req.session.logged_in,
           });
         } else {
           // Handle case where the user data is not found
