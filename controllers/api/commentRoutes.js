@@ -9,7 +9,7 @@ const withAuth = require('../../utils/auth');
 //     res.status(200).json(allcomments);
 // });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', /*withAuth,*/ async (req, res) => {
     try {
         const newComment = await comments.create(req.body);
 
