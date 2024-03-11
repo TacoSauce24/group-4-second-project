@@ -63,4 +63,13 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 });
 
+// // New route for fetching all comments
+// router.get('/comments', withAuth, async (req, res) => {
+//     try {
+//         const allComments = await comments.findAll();
+//         res.status(200).json(allComments);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 module.exports = router;
