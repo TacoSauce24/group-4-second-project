@@ -9,7 +9,7 @@ This project was made with express-handlebars, sequalize, node-fetch, mysql, brc
 N/A
 
 ## Usage
-Click the link to view an example of the database. 
+Click the link to view an example of the application. 
 
 
 [Animals Seen Blog](<public/images/animals blog.jpg>)
