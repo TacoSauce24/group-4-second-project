@@ -37,26 +37,31 @@ document.addEventListener("DOMContentLoaded", () => {
 const fetchAndDisplayAnimalComments = async () => {
   try {
     // Fetch existing comments from the server
-    const response = await fetch("/animalcomments");
+    const response = await fetch("/allanimalcomments");
     const existingComments = await response.json();
 
     // Check the type of existingComments
     if (typeof existingComments === "object" && existingComments !== null) {
       // Display comments if existingComments is an object
-      const commentBoxes = document.querySelectorAll(
-        ".column.is-one-third .box"
-      );
       let commentIndex = 0;
-      for (const key in existingComments) {
-        if (commentIndex >= 3) break; // Display only the first three comments
-        const comment = existingComments[key];
-        const box = commentBoxes[commentIndex];
-        box.querySelector("h2").textContent =
-          comment.comment_title || comment.comment_title || "Default Title";
-        box.querySelector("p").textContent =
-          comment.comment_text || comment.comment_body || "Default Content";
+
+      existingComments.forEach((comment) => {
+        const container = document.querySelector('.database-comments');
+
+        const loadComment = document.createElement('div');
+        loadComment.classList.add(`existing-comment${commentIndex}`, "box");
+        const errorComment = document.querySelector('.existing-comment');
+        if(errorComment !== null){
+          errorComment.remove();
+        }
+        loadComment.innerHTML = 
+        `
+          <h3 class="comment-title${commentIndex} has-text-centered">${comment.comment_title}</h3>
+          <p class="comment-body${commentIndex}">${comment.comment_body}</p>
+        `
+        container.appendChild(loadComment);
         commentIndex++;
-      }
+      })
     } else {
       console.error(
         "Existing comments data is not in the expected format. Comments will not be displayed."
@@ -81,7 +86,7 @@ const displayComment = (comment) => {
 
 // Function to handle form submission and add a new comment
 const handleCommentFormSubmit = async (event) => {
-  event.preventDefault();
+  event.preventDefault()
 
   // Get the new comment details from the form
   const commentTitle = document.getElementById("commentTitle").value;
