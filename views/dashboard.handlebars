@@ -2,14 +2,14 @@
   <div class="container">
     <h2 class="title has-text-centered">
       Welcome,
-      {{user.name}}!
+      {{username}}!
     </h2>
     <div class="custom-box">
       <div class="columns is-centered">
         <div class="column is-one-quarter">
           <form id="animalSearchForm" class="has-text-centered">
             <div class="field">
-  <label class="label" for="animalName">Search for an animal:</label>
+              <label class="label" for="animalName">Search for an animal:</label>
               <div class="control">
                 <input
                   class="input"
@@ -34,66 +34,50 @@
       <!-- Display area for Wikipedia information -->
       <div id="wikipediaInfo" class="content"></div>
 
-      <div class="columns">
-        <!-- First Comment Box -->
-        <div class="column is-one-third">
-          <div class="box">
-            <h2 class="title has-text-centered">Comment 1</h2>
-            <p>This is the content of the first comment.</p>
+      <section class="comments-container">
+        <div class="columns content">
+          {{!-- existing comments --}}
+          <div class="database-comments column is-one-third">
           </div>
         </div>
-        <!-- Second Comment Box -->
-  <div class="column is-one-third">
-    <div class="box">
-      <h2 class="title has-text-centered">Comment 2</h2>
-      <p>This is the content of the second comment.</p>
+      
+
+        <!-- New Comment Box -->
+        <div class="column is-one-third">
+          <div class="box" id="newCommentBox">
+            <h2 class="title has-text-centered">Title</h2>
+            <p> Enter comment text</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comment Form Column -->
+      <div class="column is-one-third">
+        <div class="box">
+          <h2 class="title has-text-centered">Add a Comment</h2>
+          <!-- Form to add a new comment -->
+          <form id="addCommentForm">
+            <div class="field">
+              <label class="label" for="commentTitle">Title:</label>
+              <div class="control">
+                <input class="input" type="text" id="commentTitle" placeholder="Enter comment title">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="newComment">Comment:</label>
+              <div class="control">
+                <textarea class="textarea is-small" id="newComment" placeholder="Type your comment here"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" type="submit">Submit Comment</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-
-
-<!-- Third Comment Box -->
-  <div class="column is-one-third">
-    <div class="box">
-      <h2 class="title has-text-centered">Comment 3</h2>
-      <p>Content of Comment 3 goes here.</p>
-    </div>
-  </div>
-</div>
-
-  <!-- New Comment Box -->
-<div class="column is-one-third">
-  <div class="box" id="newCommentBox">
-    <h2 class="title has-text-centered">Title</h2>
-    <p> Enter comment text</p>
-  </div>
-</div>
-
-<!-- Comment Form Column -->
-<div class="column is-one-third">
-  <div class="box">
-    <h2 class="title has-text-centered">Add a Comment</h2>
-    <!-- Form to add a new comment -->
-    <form id="addCommentForm">
-      <div class="field">
-        <label class="label" for="commentTitle">Title:</label>
-        <div class="control">
-          <input class="input" type="text" id="commentTitle" placeholder="Enter comment title">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label" for="newComment">Comment:</label>
-        <div class="control">
-          <textarea class="textarea is-small" id="newComment" placeholder="Type your comment here"></textarea>
-        </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <button class="button is-primary" type="submit">Submit Comment</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
     <!-- Include your JavaScript file -->
     <script src="/js/dashboard.js"></script>
   </div>

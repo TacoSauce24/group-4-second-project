@@ -148,6 +148,7 @@ import("node-fetch")
           res.render("dashboard", {
             pageTitle: `Welcome, ${user.name}!`,
             logged_in: req.session.logged_in,
+            username: user.name
           });
         } else {
           // Handle case where the user data is not found
@@ -160,16 +161,45 @@ import("node-fetch")
     });
 
     // Handle GET request
+    router.get("/allanimalcomments", /*withAuth,*/ async (req, res) => {
+
+      // const searchTerm = req.query.searchTerm; // Get the search term from the query parameters
+      
+
+      const allAnimalCommentsData = await comments.findAll({
+        attributes: ["comment_title", "comment_body"],
+        include: [{
+          model: animals, 
+          attributes: ["animal_name"],
+        },{
+          model: users,
+          attributes: ["name"]
+        }]
+      })
+      const allAnimalComments = allAnimalCommentsData.map((comment) => comment.get({plain:true}));
+      const allComments = allAnimalComments.map((comment) => {
+        const obj = {};
+        obj.animal=comment.animal.animal_name;
+        obj.username=comment.user.name;
+        obj.comment_title=comment.comment_title;
+        obj.comment_body=comment.comment_body;
+        return obj;
+      })
+
+      res.json(allComments);
+    });
+
     router.get("/animalcomments", /*withAuth,*/ async (req, res) => {
 
       const searchTerm = req.query.searchTerm; // Get the search term from the query parameters
 
+
       const animalComments = await animals.findAll({
         where: {
-          animal_name: "Aardvark"
+          animal_name: searchTerm
         },
         include: {
-          model: comments, 
+          model: comments,
           attributes: ["id", "comment_title", "comment_body"],
           include: {
             model: users,
@@ -177,7 +207,7 @@ import("node-fetch")
           }
         }
       })
-      res.json({animalComments})
+      res.json({ animalComments })
     });
 
     // Add the route handler for fetching data from the Wikipedia API here
