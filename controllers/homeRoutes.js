@@ -175,8 +175,8 @@ import("node-fetch")
           attributes: ["name"]
         }]
       })
-      const allAnimalComments = allAnimalCommentsData.map((comment) => comment.get({plain:true}));
-      const allComments = allAnimalComments.map((comment) => {
+      const allAnimalComments = await allAnimalCommentsData.map((comment) => comment.get({plain:true}));
+      const allComments = await allAnimalComments.map((comment) => {
         const obj = {};
         obj.animal=comment.animal.animal_name;
         obj.username=comment.user.name;

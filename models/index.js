@@ -17,7 +17,6 @@ comments.belongsTo(animals, {
 users.hasMany(comments, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
-    
 });
 
 comments.belongsTo(users, {

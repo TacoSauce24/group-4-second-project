@@ -51,10 +51,12 @@ const fetchAndDisplayAnimalComments = async () => {
       // Display comments if existingComments is an object
 
       existingComments.forEach((comment) => {
+        if(response.ok && comment.username !== null){
         const container = document.querySelector('.database-comments');
 
         const loadComment = document.createElement('div');
         loadComment.classList.add(`existing-comment${commentIndex}`, "box");
+        
         const errorComment = document.querySelector('.existing-comment');
         if(errorComment !== null){
           errorComment.remove();
@@ -66,6 +68,9 @@ const fetchAndDisplayAnimalComments = async () => {
         `
         container.appendChild(loadComment);
         commentIndex++;
+        } else {
+          console.error("an error has occured, most likely user_id was set to null");
+        }
       })
     } else {
       console.error(
@@ -93,27 +98,31 @@ const handleCommentFormSubmit = async (event) => {
     // Get the new comment details from the form
     const comment_title = await document.getElementById(`new-comment-title`).value;
     const comment_body = await document.getElementById(`new-comment-body`).value;
-    const user_id = await sessionStorage.getItem('user_id');
-    const animal_id = await fetch(`/api/animals/:${animalName}`, {
+    const animalResponse = await fetch(`/api/animals/${animalName}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
-    console.log(comment_title, comment_body, user_id, animal_id);
+    const animal_id = await animalResponse.json();
+    console.log(animal_id);
+
+    console.log(comment_title, comment_body, animal_id);
 
     const newCommentResponse = await fetch('/api/comments', {
       method: 'POST',
       body: JSON.stringify({
         comment_title,
         comment_body,
-        user_id,
         animal_id
-      })
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
-    comment = newCommentResponse;
+    const newComment = newCommentResponse;
 
     const newContainer = document.querySelector('.new-comment-container');
 
@@ -123,10 +132,10 @@ const handleCommentFormSubmit = async (event) => {
     if (errorComment !== null) {
       errorComment.remove();
     }
-    loadNewComment.innerHTML =
+    loadNewComment.innerHTML = await
       `
-        <h3 class="comment-title${commentIndex} has-text-centered">${comment.comment_title} - ${comment.animal}</h3>
-        <p class="comment-body${commentIndex}">${comment.comment_body}</p>
+        <h3 class="comment-title${commentIndex} has-text-centered">${newComment.comment_title} - ${newComment.animal}</h3>
+        <p class="comment-body${commentIndex}">${newComment.comment_body}</p>
       `
     newContainer.appendChild(loadNewComment);
     commentIndex++;
