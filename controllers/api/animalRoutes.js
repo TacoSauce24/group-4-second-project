@@ -4,17 +4,16 @@ const { animals } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // test get
-router.post('/:name', /*withAuth,*/ async (req, res) => {
+router.get('/:name', /*withAuth,*/ async (req, res) => {
     try{
-        const animalId = await animals.findAll({
+        console.log(req.params.name)
+        const animalId = await animals.findOne({
             where:{
                 animal_name: req.params.name
             },
-            attributes: {
-                exclude: ['animal_name']
-            }
         });
-        res.status(200).json(animalId);
+        const resId = animalId.dataValues.id;
+        res.status(200).json(resId);
     } catch(err) {
         res.status(400).json(err);
     }
